@@ -48,7 +48,10 @@
 #include "ui/window.h"
 #include "ui/titlebar.h"
 #include "plugins/plugins.h"
+<<<<<<< c19ebfa64ca6141d292e82a1fb91162373cd85ed
 #include "tools/sound.h"
+=======
+>>>>>>> update copyrgihts in files touched
 
 #ifdef HAVE_LIBOTR
 #include "otr/otr.h"
