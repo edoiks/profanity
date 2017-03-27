@@ -350,7 +350,13 @@ sv_ev_room_message(ProfMessage *message)
         if ((g_strcmp0(mynick, message->jid->resourcepart) != 0) && (prefs_get_boolean(PREF_BEEP))) {
             beep();
         }
-        notify_sound();
+
+        if ((g_strcmp0(mynick, nick) != 0) && (prefs_get_boolean(PREF_SOUND))) {
+            GString *cmd = g_string_new("");;
+            g_string_append_printf(cmd, "%s > /dev/null 2>&1", prefs_get_string(PREF_SOUND_CMD));
+            FILE *stream = popen(cmd->str, "r");
+            pclose(stream);
+        }
     // not currently on groupchat window
     } else {
         status_bar_new(num, WIN_MUC, mucwin->roomjid);
@@ -378,8 +384,9 @@ sv_ev_room_message(ProfMessage *message)
     }
     mucwin->last_msg_timestamp  = g_date_time_new_now_local();
 
+    notify_sound();
     if (prefs_do_room_notify(is_current, mucwin->roomjid, mynick, message->jid->resourcepart, message->plain, mention, triggers != NULL)) {
-        Jid *jidp = jid_create(mucwin->roomjid);
+	Jid *jidp = jid_create(mucwin->roomjid);
         notify_room_message(message->jid->resourcepart, jidp->localpart, num, message->plain);
         jid_destroy(jidp);
     }
