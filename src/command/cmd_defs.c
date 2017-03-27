@@ -1150,6 +1150,25 @@ static struct cmd_t command_defs[] =
         CMD_NOEXAMPLES
     },
 
+    { "/sound",
+        parse_args, 1, 2, &cons_sound_setting,
+        CMD_NOSUBFUNCS
+        CMD_MAINFUNC(cmd_sound)
+        CMD_TAGS(
+            CMD_TAG_UI)
+        CMD_SYN(
+            "/sound on|off")
+        CMD_DESC(
+            "Switch the terminal bell on or off. "
+            "The bell will sound when incoming messages are received. "
+            "If the terminal does not support sounds, it may attempt to flash the screen instead.")
+        CMD_ARGS(
+            { "on|off", "Enable or disable sounds." },
+            { "cmd <command>", "Run this command for sound"},
+            { "test", "Test notification"})
+        CMD_NOEXAMPLES
+    },
+
     { "/console",
         parse_args, 2, 2, &cons_console_setting,
         CMD_NOSUBFUNCS

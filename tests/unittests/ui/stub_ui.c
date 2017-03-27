@@ -418,6 +418,7 @@ void cons_theme_setting(void) {}
 void cons_privileges_setting(void) {}
 void cons_beep_setting(void) {}
 void cons_color_setting(void) {}
+void cons_sound_setting(void) {}
 void cons_console_setting(void) {}
 void cons_flash_setting(void) {}
 void cons_splash_setting(void) {}

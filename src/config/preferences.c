@@ -1654,6 +1654,8 @@ _get_group(preference_t pref)
         case PREF_CLEAR_PERSIST_HISTORY:
         case PREF_SPLASH:
         case PREF_BEEP:
+        case PREF_SOUND:
+        case PREF_SOUND_CMD:
         case PREF_THEME:
         case PREF_VERCHECK:
         case PREF_WINTITLE_SHOW:
@@ -1792,6 +1794,10 @@ _get_key(preference_t pref)
             return "splash";
         case PREF_BEEP:
             return "beep";
+        case PREF_SOUND:
+            return "sound";
+        case PREF_SOUND_CMD:
+            return "sound.cmd";
         case PREF_THEME:
             return "theme";
         case PREF_VERCHECK:
@@ -2105,6 +2111,8 @@ _get_default_string(preference_t pref)
             return "after";
         case PREF_ROSTER_PRIVATE:
             return "room";
+        case PREF_SOUND_CMD:
+            return "mpg123";
         case PREF_TIME_CONSOLE:
             return "%H:%M:%S";
         case PREF_TIME_CHAT:
@@ -2143,3 +2151,4 @@ _get_default_string(preference_t pref)
             return NULL;
     }
 }
+

@@ -5071,6 +5071,37 @@ cmd_beep(ProfWin *window, const char *const command, gchar **args)
 }
 
 gboolean
+cmd_sound(ProfWin *window, const char *const command, gchar **args)
+{
+    if (strcmp(args[0], "on") == 0 || strcmp(args[0], "off") == 0){
+        _cmd_set_boolean_preference(args[0], command, "Sound", PREF_SOUND);
+        return TRUE;
+    }
+
+    if ((strcmp(args[0], "cmd") != 0) && strcmp(args[0], "test") != 0){
+        cons_bad_cmd_usage(command);
+        return TRUE;
+    }
+
+    if (g_strcmp0(args[0], "cmd") == 0) {
+        char *setting = args[1];
+        prefs_set_string(PREF_SOUND_CMD, setting);
+        cons_show("Notification sound cmd set to: %s", setting);
+        return TRUE;
+    }
+
+    if (g_strcmp0(args[0], "test") == 0) {
+       cons_show("Testing sound");
+       GString *cmd = g_string_new("");;
+       g_string_append_printf(cmd, "%s > /dev/null 2>&1", prefs_get_string(PREF_SOUND_CMD));
+       FILE *stream = popen(cmd->str, "r");
+       pclose(stream);
+    }
+
+    return TRUE;
+}
+
+gboolean
 cmd_console(ProfWin *window, const char *const command, gchar **args)
 {
     if ((g_strcmp0(args[0], "chat") != 0) && (g_strcmp0(args[0], "muc") != 0) && (g_strcmp0(args[0], "private") != 0)) {

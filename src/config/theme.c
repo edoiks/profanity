@@ -289,6 +289,7 @@ _load_preferences(void)
 {
     // load booleans from theme and set them to prefs
     _set_boolean_preference("beep", PREF_BEEP);
+    _set_boolean_preference("sound", PREF_SOUND);
     _set_boolean_preference("flash", PREF_FLASH);
     _set_boolean_preference("splash", PREF_SPLASH);
     _set_boolean_preference("wrap", PREF_WRAP);
@@ -322,6 +323,7 @@ _load_preferences(void)
 
     // load strings from theme and set them to prefs
     _set_string_preference("time.console", PREF_TIME_CONSOLE);
+    _set_string_preference("sound.cmd", PREF_SOUND_CMD);
     _set_string_preference("time.chat", PREF_TIME_CHAT);
     _set_string_preference("time.muc", PREF_TIME_MUC);
     _set_string_preference("time.config", PREF_TIME_CONFIG);

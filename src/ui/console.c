@@ -1109,6 +1109,18 @@ cons_beep_setting(void)
 }
 
 void
+cons_sound_setting(void)
+{
+    if (prefs_get_boolean(PREF_SOUND))
+        cons_show("Notification sound (/sound)               : ON");
+    else
+        cons_show("Notification sound (/sound)               : OFF");
+    char *privsetting = prefs_get_string(PREF_SOUND_CMD);
+    cons_show("Notification sound cmd (/sound) : %s", privsetting);
+    prefs_free_string(privsetting);
+}
+
+void
 cons_resource_setting(void)
 {
     if (prefs_get_boolean(PREF_RESOURCE_TITLE))
@@ -1563,6 +1575,7 @@ cons_show_ui_prefs(void)
     cons_show("");
     cons_theme_setting();
     cons_beep_setting();
+    cons_sound_setting();
     cons_flash_setting();
     cons_splash_setting();
     cons_winpos_setting();
