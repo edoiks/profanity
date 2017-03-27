@@ -48,10 +48,7 @@
 #include "ui/window.h"
 #include "ui/titlebar.h"
 #include "plugins/plugins.h"
-<<<<<<< c19ebfa64ca6141d292e82a1fb91162373cd85ed
 #include "tools/sound.h"
-=======
->>>>>>> update copyrgihts in files touched
 
 #ifdef HAVE_LIBOTR
 #include "otr/otr.h"
@@ -299,12 +296,15 @@ chatwin_incoming_msg(ProfChatWin *chatwin, ProfMessage *message, gboolean win_cr
         beep();
     }
     notify_sound();
+<<<<<<< d75df6b54a8052d769118c9f2de8c1fbf7798183
     if (prefs_get_boolean(PREF_SOUND)) {
         GString *cmd = g_string_new("");;
         g_string_append_printf(cmd, "%s > /dev/null 2>&1", prefs_get_string(PREF_SOUND_CMD));
         FILE *stream = popen(cmd->str, "r");
         pclose(stream);
     }
+=======
+>>>>>>> extract sound notification to function
     if (notify) {
         notify_message(display_name, num, message->plain);
     }
