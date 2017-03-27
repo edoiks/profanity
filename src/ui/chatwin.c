@@ -48,6 +48,7 @@
 #include "ui/window.h"
 #include "ui/titlebar.h"
 #include "plugins/plugins.h"
+#include "tools/sound.h"
 
 #ifdef HAVE_LIBOTR
 #include "otr/otr.h"
@@ -294,12 +295,7 @@ chatwin_incoming_msg(ProfChatWin *chatwin, ProfMessage *message, gboolean win_cr
     if (prefs_get_boolean(PREF_BEEP)) {
         beep();
     }
-    if (prefs_get_boolean(PREF_SOUND)) {
-        GString *cmd = g_string_new("");;
-        g_string_append_printf(cmd, "%s > /dev/null 2>&1", prefs_get_string(PREF_SOUND_CMD));
-        FILE *stream = popen(cmd->str, "r");
-        pclose(stream);
-    }
+    notify_sound();
     if (notify) {
         notify_message(display_name, num, message->plain);
     }

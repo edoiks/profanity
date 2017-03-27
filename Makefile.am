@@ -43,6 +43,7 @@ core_sources = \
 	src/tools/autocomplete.c src/tools/autocomplete.h \
 	src/tools/tinyurl.c src/tools/tinyurl.h \
 	src/tools/clipboard.c src/tools/clipboard.h \
+	src/tools/sound.c src/tools/sound.h \
 	src/config/files.c src/config/files.h \
 	src/config/conflists.c src/config/conflists.h \
 	src/config/accounts.c src/config/accounts.h \
