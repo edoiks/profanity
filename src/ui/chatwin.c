@@ -48,6 +48,7 @@
 #include "ui/window.h"
 #include "ui/titlebar.h"
 #include "plugins/plugins.h"
+
 #ifdef HAVE_LIBOTR
 #include "otr/otr.h"
 #endif
